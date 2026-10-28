@@ -190,7 +190,19 @@ def load_scenario_df(scenario_name):
     if os.path.exists(path):
         return pd.read_csv(path)
     if scenario_name == "live_log" and os.path.exists("cold_chain_log.csv"):
-        return pd.read_csv("cold_chain_log.csv")
+        df = pd.read_csv("cold_chain_log.csv")
+        df.columns = [c.strip().lower() for c in df.columns]
+        rename_map = {
+            "stability_pct": "stability_index_pct",
+            "equiv_hours": "cumulative_equiv_hours"
+        }
+        df = df.rename(columns=rename_map)
+        if "temp_core_c" in df.columns and "temp_pack_c" in df.columns and "temp_top_c" in df.columns:
+            if "thermal_gradient" not in df.columns:
+                df["thermal_gradient"] = (df["temp_top_c"] - df["temp_pack_c"]).abs().round(2)
+            if "status_label" not in df.columns:
+                df["status_label"] = df.get("status", "NORMAL_COLD_STORAGE")
+            return df
     return None
 
 
