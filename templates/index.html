@@ -1,91 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BioShield AI | Edge Cold-Chain & Arrhenius Kinetics Platform</title>
-    
+
     <!-- Google Fonts & Chart.js -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        :root {
-            --bg-base: #07090e;
-            --card-surface: rgba(18, 24, 38, 0.72);
-            --card-surface-hover: rgba(26, 34, 54, 0.85);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(0, 210, 211, 0.3);
-            
-            --neon-cyan: #00d2d3;
-            --neon-emerald: #10ac84;
-            --neon-amber: #ff9f43;
-            --neon-rose: #ff4757;
-            --neon-pink: #ff4081;
-            --neon-blue: #2e86de;
-
-            --text-heading: #f8fafc;
-            --text-body: #cbd5e1;
+         :root {
+            /* Pure White Background & Crisp High-Contrast Theme */
+            --bg-base: #ffffff;
+            --card-surface: #ffffff;
+            --card-surface-hover: #f8fafc;
+            --border-glass: #e2e8f0;
+            --border-highlight: #00b4d8;
+            --neon-cyan: #0077b6;
+            --neon-emerald: #0f9d58;
+            --neon-amber: #d97706;
+            --neon-rose: #dc2626;
+            --neon-pink: #d81b60;
+            --neon-blue: #1d4ed8;
+            --text-heading: #0f172a;
+            --text-body: #334155;
             --text-muted: #64748b;
         }
-
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-
+        
         body {
-            background-color: var(--bg-base);
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(0, 210, 211, 0.06) 0px, transparent 50%),
-                radial-gradient(at 90% 90%, rgba(16, 172, 132, 0.06) 0px, transparent 50%);
+            background-color: #ffffff;
             color: var(--text-body);
             min-height: 100vh;
             padding: 24px 32px;
         }
-
         /* Top Navigation Header */
+        
         .top-navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--card-surface);
-            backdrop-filter: blur(16px);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 14px 28px;
             margin-bottom: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-
+        
         .brand-section {
             display: flex;
             align-items: center;
             gap: 16px;
         }
-
+        
         .brand-shield {
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: linear-gradient(135deg, rgba(0, 210, 211, 0.2), rgba(16, 172, 132, 0.2));
+            background: #e0f2fe;
             border: 1px solid var(--border-highlight);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 0 20px rgba(0, 210, 211, 0.2);
         }
-
+        
         .brand-text h1 {
             font-size: 19px;
             font-weight: 800;
             color: var(--text-heading);
             letter-spacing: -0.3px;
         }
-
+        
         .brand-text p {
             font-size: 12px;
             color: var(--text-muted);
@@ -93,75 +88,88 @@
             align-items: center;
             gap: 6px;
         }
-
+        
         .live-pulse {
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: var(--neon-emerald);
-            box-shadow: 0 0 10px var(--neon-emerald);
+            box-shadow: 0 0 8px var(--neon-emerald);
             animation: pulse 1.6s infinite;
         }
-
+        
         @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.7; }
+            0% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
         }
-
+        
         .control-cluster {
             display: flex;
             align-items: center;
             gap: 14px;
         }
-
+        /* Select and Option Styling */
+        
         select {
-            background-color: #121826;
-            border: 1px solid var(--border-glass);
-            color: var(--text-heading);
+            background-color: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            color: #000000 !important;
             padding: 9px 16px;
             border-radius: 10px;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             outline: none;
             cursor: pointer;
             transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
-
+        
         select:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 12px rgba(0, 210, 211, 0.25);
+            border-color: var(--neon-cyan) !important;
+            box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
         }
-
+        
         option {
-            background-color: #121826 !important;
-            color: #f8fafc !important;
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            font-weight: 500;
             padding: 10px 14px;
             font-size: 13px;
         }
-
         /* Transport Simulation Player Bar */
+        
         .player-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--card-surface);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: 14px;
             padding: 12px 24px;
             margin-bottom: 24px;
             gap: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
-
+        
         .player-controls {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
+        
         .btn-icon {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
             color: var(--text-heading);
             width: 36px;
             height: 36px;
@@ -173,34 +181,34 @@
             transition: all 0.2s;
             font-size: 14px;
         }
-
+        
         .btn-icon:hover {
-            background: rgba(0, 210, 211, 0.15);
+            background: #e2e8f0;
             border-color: var(--neon-cyan);
             color: var(--neon-cyan);
         }
-
+        
         .scrubber-container {
             flex: 1;
             display: flex;
             align-items: center;
             gap: 14px;
         }
-
+        
         input[type="range"] {
             flex: 1;
             height: 6px;
             border-radius: 3px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #e2e8f0;
             outline: none;
             accent-color: var(--neon-cyan);
             cursor: pointer;
         }
-
         /* AI Prediction Beacon Alert */
+        
         .ai-alert-banner {
-            background: rgba(255, 159, 67, 0.08);
-            border: 1px solid rgba(255, 159, 67, 0.3);
+            background: #fffbeb;
+            border: 1px solid #fde68a;
             border-radius: 12px;
             padding: 14px 22px;
             margin-bottom: 24px;
@@ -208,43 +216,44 @@
             align-items: center;
             justify-content: space-between;
         }
-
+        
         .ai-alert-banner.safe {
-            background: rgba(16, 172, 132, 0.08);
-            border-color: rgba(16, 172, 132, 0.3);
+            background: #f0fdf4;
+            border-color: #bbf7d0;
         }
-
+        
         .alert-left {
             display: flex;
             align-items: center;
             gap: 14px;
             font-size: 14px;
         }
-
         /* KPI Hero Grid */
+        
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 16px;
             margin-bottom: 24px;
         }
-
+        
         .kpi-card {
-            background: var(--card-surface);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 20px;
             text-align: center;
             position: relative;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
             transition: all 0.2s ease;
         }
-
+        
         .kpi-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
         }
-
+        
         .kpi-title {
             font-size: 11px;
             font-weight: 700;
@@ -253,7 +262,7 @@
             color: var(--text-muted);
             margin-bottom: 12px;
         }
-
+        
         .kpi-main-val {
             font-size: 32px;
             font-weight: 800;
@@ -261,21 +270,21 @@
             font-family: 'JetBrains Mono', monospace;
             margin-bottom: 6px;
         }
-
+        
         .kpi-subtext {
             font-size: 12px;
             color: var(--text-muted);
         }
-
         /* Navigation Tabs */
+        
         .tab-nav {
             display: flex;
             gap: 10px;
-            border-bottom: 1px solid var(--border-glass);
+            border-bottom: 2px solid #e2e8f0;
             margin-bottom: 24px;
             padding-bottom: 4px;
         }
-
+        
         .tab-btn {
             background: transparent;
             border: none;
@@ -290,60 +299,60 @@
             align-items: center;
             gap: 8px;
         }
-
+        
         .tab-btn.active {
             color: var(--neon-cyan);
-            background: rgba(0, 210, 211, 0.1);
+            background: #e0f2fe;
         }
-
+        
         .tab-content {
             display: none;
         }
-
+        
         .tab-content.active {
             display: block;
         }
-
         /* Charts Panels */
+        
         .chart-row {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
             margin-bottom: 24px;
         }
-
+        
         .chart-box {
-            background: var(--card-surface);
+            background: #ffffff;
             border: 1px solid var(--border-glass);
             border-radius: 16px;
             padding: 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         }
-
+        
         .chart-box-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 18px;
         }
-
+        
         .chart-box-header h3 {
             font-size: 15px;
             font-weight: 700;
             color: var(--text-heading);
         }
-
         /* Digital Twin Graphic */
+        
         .twin-cooler-frame {
-            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border: 2px dashed #cbd5e1;
             border-radius: 14px;
             padding: 18px;
-            background: rgba(0, 0, 0, 0.4);
+            background: #f8fafc;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-
+        
         .cooler-zone {
             padding: 16px 20px;
             border-radius: 10px;
@@ -353,20 +362,34 @@
             font-size: 14px;
             font-weight: 600;
         }
-
-        .zone-lid { background: rgba(255, 159, 67, 0.15); border-left: 5px solid var(--neon-amber); }
-        .zone-core { background: rgba(255, 71, 87, 0.18); border-left: 5px solid var(--neon-rose); }
-        .zone-pack { background: rgba(0, 210, 211, 0.15); border-left: 5px solid var(--neon-cyan); }
-
+        
+        .zone-lid {
+            background: #fff7ed;
+            border-left: 5px solid var(--neon-amber);
+            color: #9a3412;
+        }
+        
+        .zone-core {
+            background: #fef2f2;
+            border-left: 5px solid var(--neon-rose);
+            color: #991b1b;
+        }
+        
+        .zone-pack {
+            background: #f0f9ff;
+            border-left: 5px solid var(--neon-cyan);
+            color: #075985;
+        }
         /* Sandbox Feedback Card */
+        
         .sandbox-feedback-card {
-            background: rgba(255, 159, 67, 0.10);
-            border: 1px solid rgba(255, 159, 67, 0.4);
+            background: #fffbeb;
+            border: 1px solid #fde68a;
             border-radius: 14px;
             padding: 20px;
             margin-top: 24px;
         }
-
+        
         .sandbox-feedback-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -374,31 +397,32 @@
             margin-top: 14px;
             margin-bottom: 16px;
         }
-
+        
         .sb-metric {
-            background: rgba(0, 0, 0, 0.3);
+            background: #ffffff;
+            border: 1px solid #fed7aa;
             border-radius: 8px;
             padding: 12px;
             text-align: center;
         }
-
+        
         .sb-metric-val {
             font-size: 22px;
             font-weight: 800;
             font-family: 'JetBrains Mono';
         }
-
         /* Certificate Section */
+        
         .cert-card {
-            background: linear-gradient(135deg, rgba(18, 24, 38, 0.95), rgba(10, 14, 23, 0.95));
-            border: 1px solid var(--border-highlight);
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
             border-radius: 16px;
             padding: 28px;
             max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
-
+        
         .cert-header {
             display: flex;
             justify-content: space-between;
@@ -406,19 +430,19 @@
             padding-bottom: 16px;
             margin-bottom: 20px;
         }
-
+        
         .cert-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 24px;
             font-size: 14px;
         }
-
+        
         .cert-table td {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
         }
-
+        
         .badge-verdict {
             display: inline-block;
             padding: 6px 14px;
@@ -427,14 +451,28 @@
             font-size: 13px;
             text-transform: uppercase;
         }
-
-        .badge-success { background: rgba(16, 172, 132, 0.2); color: var(--neon-emerald); border: 1px solid var(--neon-emerald); }
-        .badge-danger { background: rgba(255, 71, 87, 0.2); color: var(--neon-rose); border: 1px solid var(--neon-rose); }
-        .badge-warning { background: rgba(255, 159, 67, 0.2); color: var(--neon-amber); border: 1px solid var(--neon-amber); }
-
+        
+        .badge-success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+        
+        .badge-danger {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+        
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+        
         .btn-action {
-            background: linear-gradient(135deg, var(--neon-cyan), #0abde3);
-            color: #07090e;
+            background: linear-gradient(135deg, #0077b6, #0284c7);
+            color: #ffffff;
             font-weight: 700;
             padding: 10px 20px;
             border-radius: 10px;
@@ -446,10 +484,13 @@
             gap: 8px;
             transition: opacity 0.2s;
         }
-
-        .btn-action:hover { opacity: 0.9; }
+        
+        .btn-action:hover {
+            opacity: 0.95;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- TOP NAVBAR -->
@@ -463,14 +504,15 @@
         </div>
 
         <div class="control-cluster">
-            <label style="font-size: 12px; color: var(--text-muted); font-weight: 600;">PAYLOAD:</label>
+            <label style="font-size: 12px; color: #000000; font-weight: 700;">PAYLOAD:</label>
             <select id="vaccineSelect" onchange="fetchData()">
-                {% for v in vaccines %}
-                <option value="{{ v }}" {% if v == default_vaccine %}selected{% endif %}>{{ v }}</option>
-                {% endfor %}
+                <option value="Freeze-vulnerable liquid protein (Hepatitis B)" selected>❄️ Freeze-vulnerable liquid protein (Hepatitis B)</option>
+                <option value="Ultra-fragile nucleic acid (mRNA)">🧬 Ultra-fragile nucleic acid (mRNA)</option>
+                <option value="Daily life-saving peptide hormone (Insulin)">💉 Daily life-saving peptide hormone (Insulin)</option>
+                <option value="Heat-labile live virus (Measles / Polio)">🔥 Heat-labile live virus (Measles / Polio)</option>
             </select>
 
-            <label style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-left: 8px;">SCENARIO:</label>
+            <label style="font-size: 12px; color: #000000; font-weight: 700; margin-left: 8px;">SCENARIO:</label>
             <select id="scenarioSelect" onchange="fetchData()">
                 <option value="last_mile_outreach">🚚 Last-Mile Rural Outreach (Heatwave)</option>
                 <option value="accidental_freezing">❄️ Accidental Freezing Disaster</option>
@@ -510,7 +552,7 @@
                 <span id="aiMsg" style="color: var(--text-body);">Evaluating heat flux vectors...</span>
             </div>
         </div>
-        <div style="font-size: 13px; font-weight: 700;">
+        <div style="font-size: 13px; font-weight: 700; color: var(--text-heading);">
             CONFIDENCE: <span id="aiConf" style="color: var(--neon-cyan);">94.8%</span>
         </div>
     </div>
@@ -551,7 +593,7 @@
             <div class="kpi-title">WHO VVM Stage</div>
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 6px;">
                 <svg width="28" height="28" viewBox="0 0 40 40">
-                    <circle cx="20" cy="20" r="18" fill="#4A2E70" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                    <circle cx="20" cy="20" r="18" fill="#4A2E70" stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
                     <rect id="kpiVvmSquare" x="11" y="11" width="18" height="18" fill="#ffffff" stroke="rgba(0,0,0,0.3)" stroke-width="1" style="transition: fill 0.3s ease;"/>
                 </svg>
                 <span id="valVvmStage" class="kpi-main-val" style="font-size: 26px; margin-bottom: 0; color: var(--neon-emerald);">STG 1</span>
@@ -571,7 +613,6 @@
     <!-- TAB 1: TELEMETRY & AI FORECAST -->
     <div id="tab-telemetry" class="tab-content active">
         <div class="chart-row">
-            <!-- Spatial Temperature Chart with Native Green Band & AI Forecast Cone -->
             <div class="chart-box">
                 <div class="chart-box-header">
                     <h3>Multi-Point Spatial Thermal Trajectory (°C)</h3>
@@ -582,7 +623,6 @@
                 </div>
             </div>
 
-            <!-- Arrhenius Kinetics -->
             <div class="chart-box">
                 <div class="chart-box-header">
                     <h3>Arrhenius Degradation Multiplier Q(T)</h3>
@@ -598,7 +638,7 @@
         <div id="vvmComplianceCard" class="chart-box" style="margin-top: 20px;">
             <div class="chart-box-header" style="margin-bottom: 16px;">
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(74, 46, 112, 0.4); border: 1px solid #6b439c; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 16px rgba(107, 67, 156, 0.35);">
+                    <div style="width: 38px; height: 38px; border-radius: 10px; background: #f3e8ff; border: 1px solid #d8b4fe; display: flex; align-items: center; justify-content: center; font-size: 20px;">
                         🏷️
                     </div>
                     <div>
@@ -609,19 +649,16 @@
                 <span id="vvmBadgeTop" class="badge-verdict badge-success" style="font-size: 13px; padding: 6px 14px;">STAGE 1: SAFE TO USE</span>
             </div>
 
-            <div style="display: grid; grid-template-columns: 200px 1fr 340px; gap: 24px; align-items: center; background: rgba(0, 0, 0, 0.25); padding: 22px; border-radius: 14px; border: 1px solid var(--border-glass);">
-                <!-- 1. Photometric Graphic -->
+            <div style="display: grid; grid-template-columns: 200px 1fr 340px; gap: 24px; align-items: center; background: #f8fafc; padding: 22px; border-radius: 14px; border: 1px solid var(--border-glass);">
+                <!-- Photometric Graphic -->
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div style="position: relative; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center;">
                         <svg id="vvmSvg" width="130" height="130" viewBox="0 0 100 100">
-                            <!-- Outer reference circle (Fixed WHO deep violet) -->
-                            <circle cx="50" cy="50" r="42" fill="#4A2E70" stroke="rgba(255,255,255,0.4)" stroke-width="2.5"/>
-                            <!-- Crosshair tick guides -->
-                            <line x1="3" y1="50" x2="11" y2="50" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
-                            <line x1="89" y1="50" x2="97" y2="50" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
-                            <line x1="50" y1="3" x2="50" y2="11" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
-                            <line x1="50" y1="89" x2="50" y2="97" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
-                            <!-- Inner active indicator square (Dynamic color) -->
+                            <circle cx="50" cy="50" r="42" fill="#4A2E70" stroke="rgba(0,0,0,0.2)" stroke-width="2.5"/>
+                            <line x1="3" y1="50" x2="11" y2="50" stroke="#000" stroke-width="1.8"/>
+                            <line x1="89" y1="50" x2="97" y2="50" stroke="#000" stroke-width="1.8"/>
+                            <line x1="50" y1="3" x2="50" y2="11" stroke="#000" stroke-width="1.8"/>
+                            <line x1="50" y1="89" x2="50" y2="97" stroke="#000" stroke-width="1.8"/>
                             <rect id="vvmInnerSquare" x="29" y="29" width="42" height="42" fill="#ffffff" stroke="rgba(0,0,0,0.3)" stroke-width="1" style="transition: fill 0.3s ease;"/>
                         </svg>
                     </div>
@@ -630,7 +667,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Directive & Details -->
+                <!-- Directive & Details -->
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); font-weight: 700;">REGULATORY ACTION DIRECTIVE</div>
                     <div id="vvmActionText" style="font-size: 22px; font-weight: 800; color: var(--neon-emerald); letter-spacing: -0.5px;">SAFE TO USE (VACCINE VIABLE)</div>
@@ -649,8 +686,8 @@
                     </div>
                 </div>
 
-                <!-- 3. WHO 4-Stage Regulatory Reference Legend -->
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: 12px; padding: 14px 16px; font-size: 12px;">
+                <!-- Legend -->
+                <div style="background: #ffffff; border: 1px solid var(--border-glass); border-radius: 12px; padding: 14px 16px; font-size: 12px;">
                     <div style="font-weight: 700; color: var(--text-heading); margin-bottom: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">
                         WHO Regulatory Standard
                     </div>
@@ -672,8 +709,8 @@
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="display: inline-block; width: 14px; height: 14px; border-radius: 3px; background: #160822; border: 1px solid #666;"></span>
-                            <span style="flex: 1;"><strong style="color: #ff3838;">Stage 4:</strong> Darker than ring</span>
-                            <span style="color: #ff3838; font-weight: 700; font-size: 11px;">REJECT</span>
+                            <span style="flex: 1;"><strong style="color: #b91c1c;">Stage 4:</strong> Darker than ring</span>
+                            <span style="color: #b91c1c; font-weight: 700; font-size: 11px;">REJECT</span>
                         </div>
                     </div>
                 </div>
@@ -713,7 +750,7 @@
                     <p>• <strong>Heat Flux Vector:</strong> <span id="fluxStatus" style="color: var(--neon-emerald); font-weight: 700;">Nominal insulation resistance</span></p>
                     <p>• <strong>Ice Latent Buffer:</strong> <span id="iceStatus" style="color: var(--neon-cyan); font-weight: 700;">Active 0°C Phase Transition</span></p>
                     <p>• <strong>Freeze Safety Guard:</strong> <span id="freezeGuardStatus" style="color: var(--neon-emerald); font-weight: 700;">Secure (&gt; 0°C)</span></p>
-                    <div style="margin-top: 18px; padding: 12px; background: rgba(255, 255, 255, 0.04); border-radius: 8px; font-size: 12px; color: var(--text-muted);">
+                    <div style="margin-top: 18px; padding: 12px; background: #f8fafc; border: 1px solid var(--border-glass); border-radius: 8px; font-size: 12px; color: var(--text-muted);">
                         The 3-point spatial configuration measures Fourier conduction across the container height:
                         <code>q = -k · (T_top - T_pack) / L</code>.
                     </div>
@@ -742,7 +779,7 @@
                     <input type="range" id="ambSlider" min="20" max="45" value="32" oninput="document.getElementById('valAmbSlider').innerText = this.value + ' °C'; fetchData();">
                 </div>
 
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255, 255, 255, 0.04); border-radius: 12px; border: 1px solid var(--border-glass);">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: #f8fafc; border-radius: 12px; border: 1px solid var(--border-glass);">
                     <div>
                         <strong style="color: var(--text-heading); font-size: 14px;">Simulate Lid-Open Breach</strong>
                         <p style="font-size: 12px; color: var(--text-muted);">Simulates field vaccination opening with warm convective air inflow</p>
@@ -754,8 +791,8 @@
             <!-- LIVE SIMULATION IMPACT CARD -->
             <div class="sandbox-feedback-card">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h4 style="font-size: 14px; font-weight: 800; color: var(--neon-amber);">⚡ REAL-TIME SIMULATION IMPACT ON PAYLOAD</h4>
-                    <span id="sbBadge" style="font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: rgba(255, 159, 67, 0.2); color: var(--neon-amber);">ACTIVE</span>
+                    <h4 style="font-size: 14px; font-weight: 800; color: #b45309;">⚡ REAL-TIME SIMULATION IMPACT ON PAYLOAD</h4>
+                    <span id="sbBadge" style="font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: #fef3c7; color: #b45309;">ACTIVE</span>
                 </div>
 
                 <div class="sandbox-feedback-grid">
@@ -769,11 +806,11 @@
                     </div>
                     <div class="sb-metric">
                         <div style="font-size: 11px; color: var(--text-muted);">AI ANOMALY DETECTED</div>
-                        <div id="sbAnomaly" class="sb-metric-val" style="font-size: 15px; color: #fff;">NORMAL</div>
+                        <div id="sbAnomaly" class="sb-metric-val" style="font-size: 15px; color: #0f172a;">NORMAL</div>
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #fed7aa; padding-top: 14px;">
                     <span id="sbAdvice" style="font-size: 12px; color: var(--text-body);">System functioning within baseline limits.</span>
                     <button onclick="goToTelemetryTab()" class="btn-action" style="padding: 7px 16px; font-size: 12px;">📈 View Spikes on Main Graph</button>
                 </div>
@@ -795,7 +832,7 @@
             <table class="cert-table">
                 <tr>
                     <td style="color: var(--text-muted);">Payload Product:</td>
-                    <td><strong id="certPayload" style="color: var(--text-heading);">Hepatitis B Vaccine</strong></td>
+                    <td><strong id="certPayload" style="color: var(--text-heading);">❄️ Freeze-vulnerable liquid protein (Hepatitis B)</strong></td>
                 </tr>
                 <tr>
                     <td style="color: var(--text-muted);">Pharmaceutical Category:</td>
@@ -827,13 +864,12 @@
             </table>
 
             <div style="display: flex; justify-content: flex-end; gap: 12px;">
-                <button onclick="window.print()" class="btn-action" style="background: rgba(255, 255, 255, 0.1); color: #fff;">🖨️ Print Certificate</button>
+                <button onclick="window.print()" class="btn-action" style="background: #e2e8f0; color: #0f172a;">🖨️ Print Certificate</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Tab Navigation
         function switchTab(tabId, el) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -850,89 +886,113 @@
             goToTelemetryTab();
             setTimeout(() => {
                 const el = document.getElementById('vvmComplianceCard');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (el) el.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
             }, 100);
         }
 
-        // Initialize Chart.js with Native Shaded Safe Zone and Dotted Limits
+        // Initialize Chart.js with Clean Light Grid Lines & Readable Labels
         const ctxTemp = document.getElementById('tempChart').getContext('2d');
         const tempChart = new Chart(ctxTemp, {
             type: 'line',
             data: {
                 labels: [],
-                datasets: [
-                    // 0: Probe 1 (Lid)
-                    { label: 'Probe 1: Lid Boundary', borderColor: '#ffa502', borderWidth: 2.5, data: [], tension: 0.3, pointRadius: 0 },
-                    // 1: Probe 2 (Core)
-                    { label: 'Probe 2: Core Payload (Vaccine)', borderColor: '#ff4757', borderWidth: 3.5, data: [], tension: 0.3, pointRadius: 0 },
-                    // 2: Probe 3 (Base)
-                    { label: 'Probe 3: Ice Pack Sink', borderColor: '#00d2d3', borderWidth: 2.5, data: [], tension: 0.3, pointRadius: 0 },
-                    
-                    // 3: Dotted AI Forecast Cone
-                    { 
-                        label: '🤖 AI Forecast (+15m, +30m)', 
-                        borderColor: '#ff4081', 
-                        borderWidth: 3, 
-                        borderDash: [5, 5], 
-                        data: [], 
-                        pointRadius: 4, 
-                        pointBackgroundColor: '#ff4081',
-                        fill: false 
-                    },
-
-                    // 4: Excursion Limit 8°C (Upper bound of safe band)
-                    {
-                        label: 'Safe Band Top (8°C)',
-                        borderColor: 'rgba(255, 71, 87, 0.8)',
-                        borderWidth: 1.5,
-                        borderDash: [6, 6],
-                        data: [],
-                        pointRadius: 0,
-                        fill: false
-                    },
-
-                    // 5: Freeze Limit 2°C (Lower bound of safe band with GREEN SHADED FILL)
-                    {
-                        label: 'WHO Safe Zone (2°C - 8°C)',
-                        borderColor: 'rgba(16, 172, 132, 0.8)',
-                        borderWidth: 1.5,
-                        borderDash: [6, 6],
-                        backgroundColor: 'rgba(16, 172, 132, 0.18)', // Green shaded region!
-                        fill: '-1', // Fills up to previous dataset (8°C)
-                        data: [],
-                        pointRadius: 0
-                    },
-
-                    // 6: Freezing Hazard Limit (0°C)
-                    {
-                        label: 'Freeze Limit (0°C)',
-                        borderColor: 'rgba(46, 134, 222, 0.85)',
-                        borderWidth: 1.5,
-                        borderDash: [4, 4],
-                        data: [],
-                        pointRadius: 0,
-                        fill: false
-                    }
-                ]
+                datasets: [{
+                    label: 'Probe 1: Lid Boundary',
+                    borderColor: '#f59e0b',
+                    borderWidth: 2.5,
+                    data: [],
+                    tension: 0.3,
+                    pointRadius: 0
+                }, {
+                    label: 'Probe 2: Core Payload (Vaccine)',
+                    borderColor: '#ef4444',
+                    borderWidth: 3.5,
+                    data: [],
+                    tension: 0.3,
+                    pointRadius: 0
+                }, {
+                    label: 'Probe 3: Ice Pack Sink',
+                    borderColor: '#0284c7',
+                    borderWidth: 2.5,
+                    data: [],
+                    tension: 0.3,
+                    pointRadius: 0
+                }, {
+                    label: '🤖 AI Forecast (+15m, +30m)',
+                    borderColor: '#ec4899',
+                    borderWidth: 3,
+                    borderDash: [5, 5],
+                    data: [],
+                    pointRadius: 4,
+                    pointBackgroundColor: '#ec4899',
+                    fill: false
+                }, {
+                    label: 'Safe Band Top (8°C)',
+                    borderColor: 'rgba(239, 68, 68, 0.6)',
+                    borderWidth: 1.5,
+                    borderDash: [6, 6],
+                    data: [],
+                    pointRadius: 0,
+                    fill: false
+                }, {
+                    label: 'WHO Safe Zone (2°C - 8°C)',
+                    borderColor: 'rgba(16, 185, 129, 0.8)',
+                    borderWidth: 1.5,
+                    borderDash: [6, 6],
+                    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                    fill: '-1',
+                    data: [],
+                    pointRadius: 0
+                }, {
+                    label: 'Freeze Limit (0°C)',
+                    borderColor: 'rgba(59, 130, 246, 0.85)',
+                    borderWidth: 1.5,
+                    borderDash: [4, 4],
+                    data: [],
+                    pointRadius: 0,
+                    fill: false
+                }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#64748b', maxTicksLimit: 9 } },
-                    y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#64748b' }, min: -5, max: 42 }
+                    x: {
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#475569',
+                            maxTicksLimit: 9
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#475569'
+                        },
+                        min: -5,
+                        max: 42
+                    }
                 },
                 plugins: {
-                    legend: { 
-                        labels: { 
-                            color: '#f8fafc', 
-                            boxWidth: 12, 
-                            font: { weight: 600, size: 11 },
+                    legend: {
+                        labels: {
+                            color: '#0f172a',
+                            boxWidth: 12,
+                            font: {
+                                weight: 600,
+                                size: 11
+                            },
                             filter: function(item) {
-                                // Hide technical filler label
                                 return item.text !== 'Safe Band Top (8°C)';
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -943,23 +1003,48 @@
             type: 'line',
             data: {
                 labels: [],
-                datasets: [
-                    { label: 'Degradation Factor Q(T)', borderColor: '#ffd600', borderWidth: 2.5, data: [], tension: 0.3, pointRadius: 0 }
-                ]
+                datasets: [{
+                    label: 'Degradation Factor Q(T)',
+                    borderColor: '#d97706',
+                    borderWidth: 2.5,
+                    data: [],
+                    tension: 0.3,
+                    pointRadius: 0
+                }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#64748b', maxTicksLimit: 8 } },
-                    y: { 
+                    x: {
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#475569',
+                            maxTicksLimit: 8
+                        }
+                    },
+                    y: {
                         type: 'logarithmic',
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' }, 
-                        ticks: { color: '#64748b' } 
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            color: '#475569'
+                        }
                     }
                 },
                 plugins: {
-                    legend: { labels: { color: '#f8fafc', boxWidth: 12, font: { weight: 600 } } }
+                    legend: {
+                        labels: {
+                            color: '#0f172a',
+                            boxWidth: 12,
+                            font: {
+                                weight: 600
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -1001,7 +1086,8 @@
 
         // Fetch Live Telemetry Data
         async function fetchData() {
-            const vaccine = document.getElementById('vaccineSelect').value;
+            const vaccineSelectEl = document.getElementById('vaccineSelect');
+            const vaccine = vaccineSelectEl.value;
             const scenario = document.getElementById('scenarioSelect').value;
             const scrub = document.getElementById('scrubSlider').value;
             const ambient = document.getElementById('ambSlider').value;
@@ -1071,24 +1157,18 @@
                 document.getElementById('iceStatus').innerText = cur.t_pack < 2.0 ? 'Active 0°C Phase Transition' : 'Ice Pack Melted';
                 document.getElementById('iceStatus').style.color = cur.t_pack < 2.0 ? 'var(--neon-cyan)' : 'var(--neon-amber)';
 
-                // 4. Update Charts with Native Shaded Safe Zone & Forecast
+                // 4. Update Charts
                 const N = data.chart.labels.length;
-                
-                // Construct labels with 2 future forecast slots
                 const chartLabels = [...data.chart.labels, '+15m (AI)', '+30m (AI)'];
-                
-                // Historical sensor curves (padded with null for forecast slots)
                 const histTop = [...data.chart.t_top, null, null];
                 const histCore = [...data.chart.t_core, null, null];
                 const histPack = [...data.chart.t_pack, null, null];
 
-                // AI Forecast Cone line: starts at the last historical point, then steps into +15m and +30m
                 const aiForecast = Array(N - 1).fill(null);
-                aiForecast.push(cur.t_core); // Connect to current
-                aiForecast.push(data.ai.pred_15m); // +15m
-                aiForecast.push(data.ai.pred_30m); // +30m
+                aiForecast.push(cur.t_core);
+                aiForecast.push(data.ai.pred_15m);
+                aiForecast.push(data.ai.pred_30m);
 
-                // Constant threshold arrays spanning full width
                 const limit8 = Array(N + 2).fill(8.0);
                 const limit2 = Array(N + 2).fill(2.0);
                 const limit0 = Array(N + 2).fill(0.0);
@@ -1099,7 +1179,7 @@
                 tempChart.data.datasets[2].data = histPack;
                 tempChart.data.datasets[3].data = aiForecast;
                 tempChart.data.datasets[4].data = limit8;
-                tempChart.data.datasets[5].data = limit2; // Safe zone green fill up to 8°C
+                tempChart.data.datasets[5].data = limit2;
                 tempChart.data.datasets[6].data = limit0;
                 tempChart.update('none');
 
@@ -1111,9 +1191,9 @@
                 const sb = data.sandbox;
                 if (sb && sb.active) {
                     document.getElementById('sbBadge').innerText = 'ACTIVE STRESS';
-                    document.getElementById('sbBadge').style.background = 'rgba(255, 71, 87, 0.2)';
+                    document.getElementById('sbBadge').style.background = '#fee2e2';
                     document.getElementById('sbBadge').style.color = 'var(--neon-rose)';
-                    
+
                     const sign = sb.delta_core >= 0 ? '+' : '';
                     document.getElementById('sbDeltaCore').innerText = `${sign}${sb.delta_core.toFixed(2)} °C`;
                     document.getElementById('sbRate').innerText = `${sb.accel_jump.toFixed(1)}x`;
@@ -1121,7 +1201,7 @@
                     document.getElementById('sbAdvice').innerHTML = `<strong>Active Stress Applied:</strong> Check the graphs to see the sharp thermal rise.`;
                 } else {
                     document.getElementById('sbBadge').innerText = 'BASELINE';
-                    document.getElementById('sbBadge').style.background = 'rgba(16, 172, 132, 0.2)';
+                    document.getElementById('sbBadge').style.background = '#dcfce7';
                     document.getElementById('sbBadge').style.color = 'var(--neon-emerald)';
                     document.getElementById('sbDeltaCore').innerText = `+0.0 °C`;
                     document.getElementById('sbRate').innerText = `${cur.accel.toFixed(1)}x`;
@@ -1130,37 +1210,37 @@
                 }
 
                 // 6. Compliance Certificate
-                document.getElementById('certPayload').innerText = cur.vaccine_name;
+                const selectedText = vaccineSelectEl.options[vaccineSelectEl.selectedIndex].text;
+                document.getElementById('certPayload').innerText = cur.vaccine_name || selectedText;
                 document.getElementById('certCategory').innerText = cur.category;
                 document.getElementById('certMKT').innerText = cur.mkt_c.toFixed(2) + ' °C';
                 document.getElementById('certLoss').innerText = (100 - cur.stability).toFixed(1) + '% shelf-life equivalent lost';
-                
+
                 const certBadge = document.getElementById('certBadgeVerdict');
                 certBadge.innerText = cur.verdict_class === 'success' ? 'PASSED' : (cur.verdict_class === 'warning' ? 'CONDITIONAL' : 'QUARANTINE');
                 certBadge.className = 'badge-verdict ' + (cur.verdict_class === 'success' ? 'badge-success' : (cur.verdict_class === 'warning' ? 'badge-warning' : 'badge-danger'));
-                
+
                 document.getElementById('certVerdictText').innerText = cur.compliance_verdict;
                 document.getElementById('certVerdictText').style.color = cur.verdict_class === 'success' ? 'var(--neon-emerald)' : (cur.verdict_class === 'warning' ? 'var(--neon-amber)' : 'var(--neon-rose)');
 
-                // 7. Update Virtual WHO Vaccine Vial Monitor (VVM)
+                // 7. Update WHO VVM
                 if (data.vvm) {
                     const v = data.vvm;
                     const vvmSq = document.getElementById('kpiVvmSquare');
                     if (vvmSq) vvmSq.setAttribute('fill', v.inner_hex);
-                    
+
                     const vvmStageEl = document.getElementById('valVvmStage');
                     if (vvmStageEl) {
                         vvmStageEl.innerText = 'STG ' + v.stage;
                         vvmStageEl.style.color = v.color;
                     }
-                    
+
                     const vvmActionEl = document.getElementById('valVvmAction');
                     if (vvmActionEl) {
                         vvmActionEl.innerText = v.action_short || v.action;
                         vvmActionEl.style.color = v.color;
                     }
 
-                    // Large VVM Compliance Module
                     const vvmBadge = document.getElementById('vvmBadgeTop');
                     if (vvmBadge) {
                         vvmBadge.innerText = v.stage_name.toUpperCase();
@@ -1191,7 +1271,6 @@
                         stabText.style.color = v.color;
                     }
 
-                    // Certificate VVM row
                     const certVvm = document.getElementById('certVvmText');
                     if (certVvm) {
                         certVvm.innerText = v.stage_name.toUpperCase() + ' (' + v.action + ')';
@@ -1209,4 +1288,5 @@
         fetchData();
     </script>
 </body>
+
 </html>
