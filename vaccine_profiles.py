@@ -50,11 +50,37 @@ VACCINE_DATABASE = {
     }
 }
 
+# Aliases for frontend dropdown UI compatibility
+VACCINE_DATABASE["Freeze-vulnerable liquid protein (Hepatitis B)"] = VACCINE_DATABASE["Hepatitis B Vaccine (Recombinant)"]
+VACCINE_DATABASE["Ultra-fragile nucleic acid (mRNA)"] = VACCINE_DATABASE["mRNA-1273 (COVID-19 Lipid Nanoparticle)"]
+VACCINE_DATABASE["Daily life-saving peptide hormone (Insulin)"] = VACCINE_DATABASE["Human Regular Insulin"]
+VACCINE_DATABASE["Heat-labile live virus (Measles / Polio)"] = VACCINE_DATABASE["Measles / OPV (Live Attenuated Vaccine)"]
+
+
+def get_vaccine_profile(vaccine_name):
+    """Robust lookup supporting canonical names, UI labels, and keywords."""
+    if not vaccine_name:
+        return VACCINE_DATABASE["Hepatitis B Vaccine (Recombinant)"]
+    if vaccine_name in VACCINE_DATABASE:
+        return VACCINE_DATABASE[vaccine_name]
+    
+    val_lower = str(vaccine_name).lower()
+    if "mrna" in val_lower or "nucleic" in val_lower:
+        return VACCINE_DATABASE["mRNA-1273 (COVID-19 Lipid Nanoparticle)"]
+    elif "insulin" in val_lower or "peptide" in val_lower:
+        return VACCINE_DATABASE["Human Regular Insulin"]
+    elif "measles" in val_lower or "polio" in val_lower or "opv" in val_lower or "virus" in val_lower:
+        return VACCINE_DATABASE["Measles / OPV (Live Attenuated Vaccine)"]
+    elif "hepatitis" in val_lower or "protein" in val_lower or "alum" in val_lower:
+        return VACCINE_DATABASE["Hepatitis B Vaccine (Recombinant)"]
+        
+    return VACCINE_DATABASE["Hepatitis B Vaccine (Recombinant)"]
+
 
 def calculate_arrhenius_factor(temp_c, vaccine_name):
     """Calculates relative acceleration factor Q(T) for a specific vaccine."""
     import math
-    profile = VACCINE_DATABASE.get(vaccine_name, VACCINE_DATABASE["Hepatitis B Vaccine (Recombinant)"])
+    profile = get_vaccine_profile(vaccine_name)
     
     if temp_c <= -20.0:
         return 0.01

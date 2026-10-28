@@ -20,7 +20,7 @@ import pandas as pd
 from flask import Flask, render_template, jsonify, request, send_file
 
 # Import local modules
-from vaccine_profiles import VACCINE_DATABASE, calculate_arrhenius_factor
+from vaccine_profiles import VACCINE_DATABASE, calculate_arrhenius_factor, get_vaccine_profile
 from ai_model import ColdChainAI
 
 app = Flask(__name__)
@@ -210,7 +210,7 @@ def get_telemetry():
     ambient_override = request.args.get('ambient', None)
     lid_override = (request.args.get('lid_open', 'false').lower() == 'true')
 
-    profile = VACCINE_DATABASE.get(vaccine, VACCINE_DATABASE["Hepatitis B Vaccine (Recombinant)"])
+    profile = get_vaccine_profile(vaccine)
     df = load_scenario_df(scenario)
 
     if df is None or len(df) == 0:
